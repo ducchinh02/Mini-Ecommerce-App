@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 16px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+
+input,
+button {
+  outline: none;
+  border: none;
+}
+
+ul {
+  margin: 0;
+  list-style-type: none;
+}
+#app {
+  min-height: 100vh;
+  position: relative;
+}
