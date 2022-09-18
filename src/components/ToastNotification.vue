@@ -6,7 +6,7 @@
       <img src="@/assets/images/cart.svg" alt="" />
     </div>
     <span class="pl-[36px] transition-all duration-300 opacity-0"
-      >Product added to cart successfully
+      >Product added to cart
     </span>
   </div>
 </template>
