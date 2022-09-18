@@ -64,7 +64,14 @@ import { PRODUCTS, CART } from "@/constants/index";
 import { reactive, onBeforeMount, ref } from "vue";
 import { useRoute } from "vue-router";
 export default {
-  setup() {
+  props: {
+    isAddToCart: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+  },
+  setup(props, { emit }) {
     const listProducts = reactive(PRODUCTS);
     const product = ref(null);
     const route = useRoute();
@@ -85,6 +92,8 @@ export default {
       } else {
         checkProduct.quantity += quant;
       }
+      // localStorage.setItem("cart", JSON.stringify(cart));
+      emit("ProductAdded");
     };
     const descQuantity = () => {
       quantity.value -= 1;
@@ -95,6 +104,7 @@ export default {
     const incrQuantity = () => {
       quantity.value += 1;
     };
+
     return { product, quantity, incrQuantity, descQuantity, addToCart };
   },
 };

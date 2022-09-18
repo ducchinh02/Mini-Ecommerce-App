@@ -100,6 +100,7 @@ export const PRODUCTS = [
   },
 ];
 
+// export const CART = JSON.parse(localStorage.getItem("cart") || "[]");
 export const CART = [];
 
 export const filterBtn = [

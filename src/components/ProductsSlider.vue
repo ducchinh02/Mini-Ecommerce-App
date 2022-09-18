@@ -24,7 +24,7 @@
       v-for="product in array"
       :key="product.name"
     >
-      <product-card :product="product" />
+      <product-card @ProductAdded="addToCart" :product="product" />
     </swiper-slide>
   </swiper>
 </template>
@@ -50,12 +50,16 @@ export default {
       },
     },
   },
-  setup() {
+  setup(props, { emit }) {
     const onSwiper = () => {};
     const onSlideChange = () => {};
+    const addToCart = () => {
+      emit("ProductAdded");
+    };
     return {
       onSwiper,
       onSlideChange,
+      addToCart,
     };
   },
 };

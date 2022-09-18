@@ -1,8 +1,8 @@
 <template>
-  <router-link :to="{ name: 'Cart', params: {} }">
-    <nav
-      class="nav-bottom fixed w-full left-0 bottom-0 bg-black py-[30px] rounded-[38px] z-50"
-    >
+  <nav
+    class="nav-bottom fixed w-full left-0 bottom-0 bg-black rounded-[38px] z-50"
+  >
+    <router-link class="py-[30px] block" :to="{ name: 'Cart', params: {} }">
       <div class="container mx-auto px-10">
         <div class="flex justify-between items-center">
           <div
@@ -31,8 +31,8 @@
           </div>
         </div>
       </div>
-    </nav>
-  </router-link>
+    </router-link>
+  </nav>
 </template>
 
 <script>
@@ -53,6 +53,7 @@ export default {
   margin-left: -30px;
 }
 .nav-bottom {
+  z-index: 99999;
   animation: slideBottom 0.5s 0.2s ease-in-out forwards;
   transform: translateY(100%);
   -webkit-transform: translateY(100%);

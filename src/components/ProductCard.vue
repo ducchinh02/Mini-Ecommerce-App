@@ -50,7 +50,7 @@ export default {
       required: false,
     },
   },
-  setup() {
+  setup(props, { emit }) {
     const cart = reactive(CART);
     const addToCart = (product) => {
       const checkProduct = cart.find((prd) => prd.name === product.name);
@@ -62,6 +62,8 @@ export default {
       } else {
         checkProduct.quantity += 1;
       }
+      // localStorage.setItem("cart", JSON.stringify(cart));
+      emit("ProductAdded");
     };
     return { cart, addToCart };
   },

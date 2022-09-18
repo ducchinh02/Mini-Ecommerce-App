@@ -5,6 +5,7 @@
       :product="product"
       :key="product.id"
       class="w-full md:w-[48%] lg:w-[31%]"
+      @ProductAdded="addToCart"
     />
   </div>
 </template>
@@ -17,7 +18,7 @@ import ProductCard from "../components/ProductCard.vue";
 
 export default {
   components: { ProductCard },
-  setup() {
+  setup(props, { emit }) {
     const route = useRoute();
     const products = reactive(PRODUCTS);
     const productFilter = computed(() => {
@@ -29,7 +30,10 @@ export default {
         return products;
       }
     });
-    return { products, productFilter };
+    const addToCart = () => {
+      emit("ProductAdded");
+    };
+    return { products, productFilter, addToCart };
   },
 };
 </script>

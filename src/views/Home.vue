@@ -1,7 +1,10 @@
 <template>
-  <div class="home pb-28">
+  <div
+    class="home transition-all duration-300"
+    :class="{ 'pb-28': isAddToCart }"
+  >
     <div class="container mx-auto">
-      <products-slider :array="products" />
+      <products-slider @ProductAdded="addToCart" :array="products" />
     </div>
   </div>
 </template>
@@ -10,16 +13,25 @@
 <script>
 import { PRODUCTS } from "@/constants";
 import { reactive } from "vue";
-// import ProductCard from "./components/ProductCard.vue";
 import ProductsSlider from "@/components/ProductsSlider.vue";
 
 export default {
+  props: {
+    isAddToCart: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+  },
   components: {
     ProductsSlider,
   },
-  setup() {
+  setup(props, { emit }) {
     const products = reactive(PRODUCTS);
-    return { products };
+    const addToCart = () => {
+      emit("ProductAdded");
+    };
+    return { products, addToCart };
   },
 };
 </script>
