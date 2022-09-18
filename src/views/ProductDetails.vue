@@ -42,10 +42,12 @@
         </div>
         <div
           class="font-bold cursor-pointer"
-          @click="addToCart(product, quantity)"
+          :class="{ 'cursor-not-allowed': quantity == 0 }"
         >
           <div
-            class="add-to-cart relative my-8 bg-white flex items-center justify-between p-3 pl-10 rounded-[53px]"
+            @click="addToCart(product, quantity)"
+            :class="{ 'bg-[#dfdfdf] pointer-events-none': quantity == 0 }"
+            class="add-to-cart transition-all duration-300 relative my-8 bg-white flex items-center justify-between p-3 pl-10 rounded-[53px]"
           >
             <p class="font-bold">Add To Cart</p>
 
@@ -64,13 +66,6 @@ import { PRODUCTS, CART } from "@/constants/index";
 import { reactive, onBeforeMount, ref } from "vue";
 import { useRoute } from "vue-router";
 export default {
-  props: {
-    isAddToCart: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-  },
   setup(props, { emit }) {
     const listProducts = reactive(PRODUCTS);
     const product = ref(null);
