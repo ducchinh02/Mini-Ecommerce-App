@@ -62,7 +62,7 @@ export default {
       } else {
         checkProduct.quantity += 1;
       }
-      // localStorage.setItem("cart", JSON.stringify(cart));
+      localStorage.setItem("cart", JSON.stringify(cart));
       emit("ProductAdded");
     };
     return { cart, addToCart };
